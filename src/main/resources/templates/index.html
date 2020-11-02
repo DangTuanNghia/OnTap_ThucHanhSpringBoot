@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="Css/bootstrap.css">
+    <link rel="stylesheet" href="Css/bootstrap-grid.css">
+    <link rel="stylesheet" href="Css/bootstrap-reboot.css">
+</head>
+<body>
+<div class="container">
+    <h1>Manage User</h1>
+
+    <table class="table">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">userName</th>
+            <th scope="col">password</th>
+            <th scope="col">role</th>
+            <th scope="col">Actions</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td  th:text="${user.name}"></td>
+            <td  th:text="${user.email}"></td>
+            <td th:text="${user.phone}"></td>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.role}"></td>
+            <td >
+              <span> <a th:href="@{/edit?id={id}(id=${user.id})}" class="btn btn-link">Edit</a>|
+                <a th:href="@{/delete?id={id}(id=${user.id})}" class="btn btn-link">Delete</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <a href="/add" class="btn btn-success">Add User</a>
+</div>
+</body>
+
+</html>
